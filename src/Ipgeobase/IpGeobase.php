@@ -11,8 +11,8 @@ class IpGeobase {
 
     private $fhandleCIDR, $fhandleCities, $fSizeCIDR, $fsizeCities;
     private $path;
-    private $citiesDb = 'cities.txt';
-    private $cidrDb = 'cidr_optim.txt';
+    private $citiesDb;
+    private $cidrDb;
 
     /**
      * 
@@ -26,24 +26,25 @@ class IpGeobase {
      * @throws \Exception
      */
     private function start() {
-        $this->path = dirname(__FILE__) . "/../etc/";
+        $this->path = dirname(__FILE__) . "/../etc/";     
         if (empty($this->cidrDb)) {
             $this->cidrDb = $this->path . '/cidr_optim.txt';
         }
         if (empty($this->citiesDb)) {
             $this->citiesDb = $this->path . '/cities.txt';
         }
-
-        $this->fhandleCIDR = fopen($this->cidrDb, 'r');
-        $this->fhandleCities = fopen($this->citiesDb, 'r');
-        if (!$this->fhandleCIDR) {
-            throw new \Exception('Failed to open Cidr');
+        if (empty($this->fhandleCIDR) || empty($this->fhandleCities)) {
+            $this->fhandleCIDR = fopen($this->cidrDb, 'r');
+            $this->fhandleCities = fopen($this->citiesDb, 'r');
+            if (!$this->fhandleCIDR) {
+                throw new \Exception('Failed to open Cidr');
+            }
+            if (!$this->fhandleCities) {
+                throw new \Exception('Failed to open cities file');
+            }
+            $this->fSizeCIDR = filesize($this->cidrDb);
+            $this->fsizeCities = filesize($this->citiesDb);
         }
-        if (!$this->fhandleCities) {
-            throw new \Exception('Failed to open cities file');
-        }
-        $this->fSizeCIDR = filesize($this->cidrDb);
-        $this->fsizeCities = filesize($this->citiesDb);
     }
 
     /**
@@ -86,9 +87,10 @@ class IpGeobase {
      * @throws \Exception
      */
     public function lookup($ip) {
-        if(empty($ip)){
+        if (empty($ip)) {
             throw new Exception('Ip is not set');
         }
+        $this->start();
 
         $ip = sprintf('%u', ip2long($ip));
 
