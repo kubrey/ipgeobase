@@ -17,7 +17,7 @@
     "require": {
         "kubrey/ipgeobase": "dev-master"
     },
-"repositories":[
+    "repositories":[
         {
             "type":"git",
             "url":"https://bitbucket.org/kubrey/ipgeobase"
