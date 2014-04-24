@@ -1,5 +1,7 @@
 {
     "name":"kubrey/ipgeobase",
+    "description": "Ipgeobase PHP API",
+    "keywords": [ "geoip", "geolocation", "ipgeobase","ipgeobase.ru" ],
     "version":"0.2.0",
     "require":{
         "php":">=5.3.0"
