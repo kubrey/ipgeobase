@@ -15,7 +15,7 @@
 ```json
 {
     "require": {
-        "kubrey/ipgeobase": "0.2.*"
+        "kubrey/ipgeobase": "dev-master"
     }
 }
 ```
