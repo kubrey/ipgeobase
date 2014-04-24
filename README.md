@@ -41,6 +41,7 @@ php composer.phar install
 Выполнить автозагрузку всех пакетов composer можно подключив скрипт:
 ```
 require 'vendor/autoload.php';
+```
 
 
 
