@@ -7,7 +7,7 @@
 
 ### Установка через Composer ###
 
-#### Define Your Dependencies ####
+#### Определение зависимостей ####
 
  [Composer](http://getcomposer.org/).
 Для установки добавьте `kubrey/ipgeobase` в Ваш `composer.json`. Если этого файла нет, то создайте его в корне сайта
