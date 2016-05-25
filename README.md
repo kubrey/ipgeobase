@@ -12,19 +12,10 @@
  [Composer](http://getcomposer.org/).
 Для установки добавьте `kubrey/ipgeobase` в Ваш `composer.json`. Если этого файла нет, то создайте его в корне сайта
 
-```json
-{
-    "require": {
-        "kubrey/ipgeobase": "dev-master"
-    },
-    "repositories":[
-        {
-            "type":"git",
-            "url":"https://bitbucket.org/kubrey/ipgeobase"
-        }
-    ]
-}
 ```
+composer require kubrey/ipgeobase
+```
+
 
 #### Установка Composer ####
 
@@ -34,13 +25,6 @@
 curl -s http://getcomposer.org/installer | php
 ```
 
-#### Установка зависимостей ####
-
-Выполнить в корне проекта: 
-
-```
-php composer.phar install
-```
 
 #### Автолоадер ####
 
